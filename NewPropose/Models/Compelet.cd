@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NewPropose.Models.Comment">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAQMAAAAAAAAAIAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Comment.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NewPropose.Models.Problem" Collapsed="true">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <AssociationLine Name="Comments" Type="NewPropose.Models.Comment" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.5" Y="1.009" />
+        <Point X="4.5" Y="2.312" />
+        <Point X="5.25" Y="2.312" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAQAAAAAgAEAAAAAAACAAAAAAAAAgEAAAAAAAIAA=</HashCode>
+      <FileName>Models\Problem.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Proposals" />
+      <Property Name="Comments" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NewPropose.Models.ProblemState" Collapsed="true">
+    <Position X="1" Y="2" Width="1.5" />
+    <AssociationLine Name="Owner" Type="NewPropose.Models.Problem" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2.5" Y="2.234" />
+        <Point X="3.562" Y="2.234" />
+        <Point X="3.562" Y="1.009" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAACAQgAQAAAAAAAAAAABAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ProblemState.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Owner" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NewPropose.Models.ProposeState" Collapsed="true">
+    <Position X="7.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAACAQgAQAAAAAAAAAAABAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ProposeState.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Owner" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NewPropose.Models.Proposal" Collapsed="true">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\Proposal.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Comments" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NewPropose.Models.Unit">
+    <Position X="3" Y="4.75" Width="1.5" />
+    <AssociationLine Name="Comments" Type="NewPropose.Models.Comment" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.375" Y="4.75" />
+        <Point X="4.375" Y="3.042" />
+        <Point X="5.25" Y="3.042" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Problem" Type="NewPropose.Models.Problem" FixedFromPoint="true">
+      <Path>
+        <Point X="3.938" Y="4.75" />
+        <Point X="3.938" Y="1.009" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAIAAAAAAAAAAAAAAAQAAAAAAAAgBAAEAAAAIAA=</HashCode>
+      <FileName>Models\Unit.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Problem" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Comments" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NewPropose.Models.Employee" Collapsed="true">
+    <Position X="6" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAIAAMAQAAAQAAAAKAAACAQAgAgAAIAg=</HashCode>
+      <FileName>Models\Employee.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Comments" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NewPropose.Models.Units.OrganizationUnit" Collapsed="true">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAAAAAAAAEAAAwAAQAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Models\Units\OrganizationUnit.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Problems" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>
