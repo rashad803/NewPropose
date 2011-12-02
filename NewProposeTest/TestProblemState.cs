@@ -64,6 +64,7 @@ namespace NewProposeTest
             justReceivedProblem.Request(stateInfo);
             var problemCounts = problemRepo.GetAllForEmployees().Count();
             Assert.NotEqual(problemCounts, 0);
+
         }
 
     }
