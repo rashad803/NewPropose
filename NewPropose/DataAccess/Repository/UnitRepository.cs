@@ -9,7 +9,7 @@ namespace NewPropose.DataAccess.Repository
 {
     public class UnitRepository : GenericRepository<Unit>, IUnitRepository
     {
-   
+        private const string TechnicalCommite = "TechnicalCommite";
         public UnitRepository(IDatabaseFactory databaseFactory)
             : base(databaseFactory)
         {
@@ -18,7 +18,13 @@ namespace NewPropose.DataAccess.Repository
 
         public IEnumerable<Unit> GetAllTechnicalCommites()
         {
-            throw new NotImplementedException();
+            return RequestDb.Units.Where(unit => unit.Type == TechnicalCommite);
+        }
+
+        public Unit CreateTechnicalCommite(string name)
+        {
+            var unit = new Unit() {Name = name, Type = TechnicalCommite};
+            return unit;
         }
     }
 }

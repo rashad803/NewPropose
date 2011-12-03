@@ -9,5 +9,6 @@ namespace NewPropose.DataAccess.IRepository
     public interface IUnitRepository : IRepository<Unit>
     {
         IEnumerable<Unit> GetAllTechnicalCommites();
+        Unit CreateTechnicalCommite(string name);
     }
 }

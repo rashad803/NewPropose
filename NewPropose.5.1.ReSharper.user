@@ -1,0 +1,112 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="public" priority="7" />
+      <Item value="Problem`0" priority="4" />
+      <Item value="problem" priority="1" />
+      <Item value="throw" priority="0" />
+      <Item value="new" priority="5" />
+      <Item value="NotImplementedException" priority="0" />
+      <Item value="static" priority="6" />
+      <Item value="return" priority="3" />
+      <Item value="var" priority="3" />
+      <Item value="ObjectMother`0" priority="0" />
+      <Item value="justReceivedProblem" priority="0" />
+      <Item value="Unit`0" priority="1" />
+      <Item value="IEnumerable" priority="1" />
+      <Item value="technicalCommitte" priority="0" />
+      <Item value="m" priority="0" />
+      <Item value="repo" priority="0" />
+      <Item value="workflowService" priority="1" />
+      <Item value="service" priority="1" />
+      <Item value="s" priority="0" />
+      <Item value="NewProblem`0" priority="0" />
+      <Item value="void" priority="0" />
+      <Item value="using" priority="0" />
+      <Item value="Xunit" priority="2" />
+      <Item value="Sdk" priority="1" />
+      <Item value="Extensions" priority="1" />
+      <Item value="AutoRollback" priority="1" />
+      <Item value="private" priority="0" />
+      <Item value="_databaseFactory" priority="2" />
+      <Item value="DatabaseFactory" priority="0" />
+      <Item value="IUnitOfWork`0" priority="0" />
+      <Item value="UnitOfWork`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@NewProposeTest.ObjectMother">
+      <Item value="RegisterStateToTechnicalCommitteeState`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.IEnumerable`1">
+      <Item value="ToList`1" priority="0" />
+      <Item value="First`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Moq.Mock`1">
+      <Item value="Setup`1" priority="1" />
+      <Item value="Object" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NewPropose.DataAccess.IRepository.IProblemRepository">
+      <Item value="GetAllForEmployees`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Moq.Language.Flow.ISetup`2">
+      <Item value="Returns`16" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:Models/d:ItemStates/d:ProplemStates/f:TechnicalCommitteeState.cs" caret="188" fromTop="7" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:Models/d:Services/f:IWorkflowService.cs" caret="221" fromTop="7" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:DataAccess/d:Repository/f:ProblemRepository.cs" caret="329" fromTop="10" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:DataAccess/d:IRepository/f:IProblemRepository.cs" caret="283" fromTop="13" />
+      <File id="A98A1C42-5EE9-40D8-872A-DAD1833A2D31/f:ProblemTest.cs" caret="2139" fromTop="47" />
+      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ProblemTest.cs" caret="223" fromTop="10" />
+      <File id="A98A1C42-5EE9-40D8-872A-DAD1833A2D31/f:ObjectMother.cs" caret="1475" fromTop="11" />
+      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ObjectMother.cs" caret="729" fromTop="21" />
+      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:packages.config" caret="168" fromTop="4" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="A98A1C42-5EE9-40D8-872A-DAD1833A2D31/f:ProblemTest.cs" caret="2768" fromTop="39" />
+      <File id="A98A1C42-5EE9-40D8-872A-DAD1833A2D31/f:ObjectMother.cs" caret="2500" fromTop="20" />
+      <File id="A98A1C42-5EE9-40D8-872A-DAD1833A2D31/f:ObjectMother.cs" caret="2497" fromTop="19" />
+      <File id="A98A1C42-5EE9-40D8-872A-DAD1833A2D31/f:ProblemTest.cs" caret="2078" fromTop="26" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:Models/d:Services/f:IWorkflowService.cs" caret="221" fromTop="7" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:DataAccess/d:Repository/f:ProblemRepository.cs" caret="732" fromTop="27" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:DataAccess/d:Repository/f:ProblemRepository.cs" caret="1136" fromTop="39" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:DataAccess/d:IRepository/f:IProblemRepository.cs" caret="271" fromTop="10" />
+      <File id="A98A1C42-5EE9-40D8-872A-DAD1833A2D31/f:ObjectMother.cs" caret="611" fromTop="10" />
+      <File id="A98A1C42-5EE9-40D8-872A-DAD1833A2D31/f:ObjectMother.cs" caret="1015" fromTop="18" />
+      <File id="A98A1C42-5EE9-40D8-872A-DAD1833A2D31/f:ProblemTest.cs" caret="1188" fromTop="17" />
+      <File id="A98A1C42-5EE9-40D8-872A-DAD1833A2D31/f:ProblemTest.cs" caret="1855" fromTop="27" />
+      <File id="A98A1C42-5EE9-40D8-872A-DAD1833A2D31/f:ProblemTest.cs" caret="2537" fromTop="32" />
+      <File id="A98A1C42-5EE9-40D8-872A-DAD1833A2D31/f:ProblemTest.cs" caret="2148" fromTop="47" />
+      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ProblemTest.cs" caret="113" fromTop="4" />
+      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ObjectMother.cs" caret="885" fromTop="31" />
+      <File id="A98A1C42-5EE9-40D8-872A-DAD1833A2D31/f:ObjectMother.cs" caret="1872" fromTop="16" />
+      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ProblemTest.cs" caret="316" fromTop="19" />
+      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ProblemTest.cs" caret="293" fromTop="19" />
+      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ProblemTest.cs" caret="223" fromTop="10" />
+      <File id="A98A1C42-5EE9-40D8-872A-DAD1833A2D31/f:ObjectMother.cs" caret="1692" fromTop="14" />
+      <File id="A98A1C42-5EE9-40D8-872A-DAD1833A2D31/f:ObjectMother.cs" caret="1513" fromTop="12" />
+      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ObjectMother.cs" caret="1315" fromTop="40" />
+      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ObjectMother.cs" caret="1530" fromTop="48" />
+      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ObjectMother.cs" caret="1143" fromTop="33" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+</Configuration>

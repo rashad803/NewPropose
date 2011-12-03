@@ -36,6 +36,7 @@ namespace NewPropose.DataAccess
             modelBuilder.Entity<Employee>().HasRequired(emp => emp.Outbox).WithRequiredDependent();
             modelBuilder.Entity<Unit>().HasRequired(unit => unit.Inbox).WithRequiredDependent();
 
+            modelBuilder.Entity<Problem>().Map(m => m.Requires(p => p.States));
             
 
             base.OnModelCreating(modelBuilder);

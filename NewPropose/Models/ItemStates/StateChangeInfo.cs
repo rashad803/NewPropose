@@ -7,6 +7,10 @@ namespace NewPropose.Models.ItemStates
 {
     public class StateChangeInfo
     {
+        public StateChangeInfo()
+        {
+            RecieverUnits = new List<Unit>();
+        }
         public IList<Unit> RecieverUnits { get; set; }
     }
 }

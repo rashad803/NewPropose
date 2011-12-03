@@ -25,18 +25,18 @@ namespace NewPropose.DataAccess.Repository
         }
 
 
-        public IEnumerable<Problem> GetNewProblems()
-        {
-            var res = RequestDb.RegisterStates.Select(state => state.Owner);
-            return res;
-        }
+        //public IEnumerable<Problem> GetNewProblems()
+        //{
+        //    var res = RequestDb.RegisterStates.Select(state => state.Owner);
+        //    return res;
+        //}
 
 
-        public IEnumerable<Problem> GetAllForEmployees()
-        {
-            var res = RequestDb.TechnicalCommitteeStates.Select(state => state.Owner);
-            return res;
+        //public IEnumerable<Problem> GetAllForEmployees()
+        //{
+        //    var res = RequestDb.TechnicalCommitteeStates.Select(state => state.Owner);
+        //    return res;
         
-        }
+        //}
     }
 }

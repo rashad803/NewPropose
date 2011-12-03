@@ -9,7 +9,5 @@ namespace NewPropose.DataAccess.IRepository
     public interface IProblemRepository : IRepository<Problem>
     {
         Problem Create(Unit unit);
-        IEnumerable<Problem> GetNewProblems();
-        IEnumerable<Problem> GetAllForEmployees();
     }
 }

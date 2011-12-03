@@ -14,6 +14,7 @@
     <AssemblyName>NewPropose</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -81,10 +82,10 @@
     <Compile Include="DataAccess\IRepository\IControlRepository.cs" />
     <Compile Include="DataAccess\IRepository\IActionRepository.cs" />
     <Compile Include="DataAccess\IRepository\IProblemRepository.cs" />
+    <Compile Include="DataAccess\IRepository\IProblemStateRepository.cs" />
     <Compile Include="DataAccess\IRepository\IUnitRepository.cs" />
     <Compile Include="DataAccess\IRepository\IRoleRepository.cs" />
     <Compile Include="DataAccess\IRepository\IProposalRepository.cs" />
-    <Compile Include="DataAccess\IRepository\IProgramElementRepository.cs" />
     <Compile Include="DataAccess\IRepository\IOutboxRepository.cs" />
     <Compile Include="DataAccess\IRepository\IInboxRepository.cs" />
     <Compile Include="DataAccess\IRepository\IEmployeeRepository.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="DataAccess\Repository\ActionRepository.cs" />
     <Compile Include="DataAccess\Repository\ControlRepository.cs" />
     <Compile Include="DataAccess\Repository\ProblemRepository.cs" />
+    <Compile Include="DataAccess\Repository\ProblemStateRepository.cs" />
     <Compile Include="DataAccess\Repository\UnitRepository.cs" />
     <Compile Include="DataAccess\Repository\RoleRepository.cs" />
     <Compile Include="DataAccess\Repository\ProposalRepository.cs" />
@@ -140,6 +142,8 @@
     <Compile Include="Models\Outbox.cs" />
     <Compile Include="Models\Problem.cs" />
     <Compile Include="Models\Proposal.cs" />
+    <Compile Include="Models\Services\Imp\WorkflowService.cs" />
+    <Compile Include="Models\Services\IWorkflowService.cs" />
     <Compile Include="Models\Unit.cs" />
     <Compile Include="Models\Units\OrganizationUnit.cs" />
     <Compile Include="Models\Units\OUGroup.cs" />
