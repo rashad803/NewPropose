@@ -12,10 +12,6 @@ namespace NewPropose.DataAccess.Repository
         public ProblemStateRepository(IDatabaseFactory databaseFactory) : base(databaseFactory)
         {
         }
-
-        public IEnumerable<Problem> GetProblemsWithRegisterState()
-        {
-            return RequestDb.ProblemStates.OfType<RegisterState>().Select(s => s.Owner);
-        }
+     
     }
 }

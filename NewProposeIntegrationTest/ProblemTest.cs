@@ -92,7 +92,29 @@ namespace NewProposeIntegrationTest
             Assert.True(res);
         }
 
+        [Fact]
+        [AutoRollback]
+        public void PeopleShouldBeAbleToSeeAllProblemsWithTechnicalCommiteState()
+        {
+            ObjectMother.Initialize();
+            ObjectMother.BuildTechnicalCommites();
+            ObjectMother.BuildProblem();
+            ObjectMother.GetUnitOrWork().Commit();
+            var techUnit = ObjectMother.GetUnitRepository().GetAllTechnicalCommites().First();
 
+            var stateInfo = new StateChangeInfo();
+            stateInfo.RecieverUnits.Add(techUnit);
+
+            var justReceivedProblem = ObjectMother.GetWorkflowService().GetNewProblems().First();
+
+            var countBefore = ObjectMother.GetWorkflowService().GetPeopleProblems().Count();
+            justReceivedProblem.Request(stateInfo);
+
+             
+            var problemsThatPeopleCanSee = ObjectMother.GetWorkflowService().GetPeopleProblems();
+            Assert.NotEqual(problemsThatPeopleCanSee.Count(), countBefore + 1);
+
+        }
 
 
     }

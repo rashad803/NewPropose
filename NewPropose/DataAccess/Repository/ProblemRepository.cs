@@ -24,6 +24,16 @@ namespace NewPropose.DataAccess.Repository
             return problem;
         }
 
+        public IEnumerable<Problem> GetProblemsWithRegisterState()
+        {
+            return RequestDb.ProblemStates.OfType<RegisterState>().Select(s => s.Owner);
+        }
+
+        public IEnumerable<Problem> GetProblemsWithTechnicalCommitteeState()
+        {
+            return RequestDb.ProblemStates.OfType<TechnicalCommitteeState>().Select(s => s.Owner);
+        }
+
 
         //public IEnumerable<Problem> GetNewProblems()
         //{

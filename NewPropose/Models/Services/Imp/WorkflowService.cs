@@ -19,17 +19,12 @@ namespace NewPropose.Models.Services.Imp
 
         public IEnumerable<Problem> GetPeopleProblems()
         {
-            var problems =
-           _problemStateRepository.GetListByFilter(ps => ps.GetType() == typeof(TechnicalCommitteeState)).Select(
-               ps => ps.Owner);
-            return problems;
+            return _problemRepository.GetProblemsWithTechnicalCommitteeState();
         }
 
         public IEnumerable<Problem> GetNewProblems()
         {
-            var problems =
-                _problemStateRepository.GetProblemsWithRegisterState();   
-            return problems;
+            return _problemRepository.GetProblemsWithRegisterState();                
         }
     }
 }
