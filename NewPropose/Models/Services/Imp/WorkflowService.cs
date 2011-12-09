@@ -28,8 +28,7 @@ namespace NewPropose.Models.Services.Imp
         public IEnumerable<Problem> GetNewProblems()
         {
             var problems =
-                _problemStateRepository.GetListByFilter(ps => ps.GetType() == typeof (RegisterState)).Select(
-                    ps => ps.Owner);
+                _problemStateRepository.GetProblemsWithRegisterState();   
             return problems;
         }
     }

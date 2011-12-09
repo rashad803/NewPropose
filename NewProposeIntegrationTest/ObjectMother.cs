@@ -20,6 +20,12 @@ namespace NewProposeIntegrationTest
             _databaseFactory = new DatabaseFactory();
         }
 
+        public static void Initialize()
+        {
+            _databaseFactory = new DatabaseFactory();
+        }
+
+
         public static IUnitOfWork GetUnitOrWork()
         {
             return new UnitOfWork(_databaseFactory);
@@ -45,13 +51,13 @@ namespace NewProposeIntegrationTest
             return new WorkflowService(GetProblemRepository(), GetProblemStateRepository());
         }
         
-        public static Problem BuildProblem()
+        public static void BuildProblem()
         {
 
             var problem = GetProblemRepository().Create(BuildUnit());
             problem.Description = "Mock New Problem";
-            problem.Title = "Mock New Problem";                
-            return problem;
+            problem.Title = "Mock New Problem";
+            ObjectMother.GetProblemRepository().Add(problem);         
         }
 
 
@@ -66,5 +72,13 @@ namespace NewProposeIntegrationTest
             var registerState = new RegisterState() { IsCurrent = true };
             return registerState;
         }
+
+
+        public static void BuildTechnicalCommites()
+        {      
+            var unitRepo = ObjectMother.GetUnitRepository();
+            unitRepo.Add(unitRepo.CreateTechnicalCommite("Mock tech unit 1"));
+            unitRepo.Add(unitRepo.CreateTechnicalCommite("Mock tech unit 2"));            
+        }             
     }
 }

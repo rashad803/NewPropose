@@ -24,10 +24,10 @@ namespace NewProposeIntegrationTest
         [AutoRollback]
         public void ShouldBeAbleToCreateNewProblem()
         {
-            var problem = ObjectMother.BuildProblem();
+            ObjectMother.Initialize();
             var repo = ObjectMother.GetProblemRepository();
             var beforeCount = repo.GetAll().Count;
-            repo.Add(problem);
+            ObjectMother.BuildProblem();                                
             var uow = ObjectMother.GetUnitOrWork();
             uow.Commit();
             var afterCount = repo.GetAll().Count;
@@ -38,14 +38,12 @@ namespace NewProposeIntegrationTest
         [AutoRollback]
         public void SecretariatUnitShouldBeAbleToSendNewProblemToArbitararyUnits()
         {
-            var unitRepo = ObjectMother.GetUnitRepository();
-            var techUnit = unitRepo.CreateTechnicalCommite("Mock tech unit");
-            
-
-            var problem = ObjectMother.BuildProblem();
-            var repo = ObjectMother.GetProblemRepository();            
-            repo.Add(problem);
+            ObjectMother.Initialize();
+            ObjectMother.BuildTechnicalCommites();
+            ObjectMother.BuildProblem();
             ObjectMother.GetUnitOrWork().Commit();
+
+            var techUnit = ObjectMother.GetUnitRepository().GetAllTechnicalCommites().First();
 
             var stateInfo = new StateChangeInfo();
             stateInfo.RecieverUnits.Add(techUnit);
@@ -54,5 +52,48 @@ namespace NewProposeIntegrationTest
             justReceivedProblem.Request(stateInfo);
             Assert.Equal(justReceivedProblem.CurrentState.GetType(), typeof(TechnicalCommitteeState));
         }
+
+        [Fact]
+        [AutoRollback]
+        public void TechnicalCommitiesShouldBeAbleToSeeProblemsWithTechnicalCommiteState()
+        {
+            ObjectMother.Initialize();
+            ObjectMother.BuildTechnicalCommites();
+            ObjectMother.BuildProblem();
+            ObjectMother.GetUnitOrWork().Commit();
+            var techUnit = ObjectMother.GetUnitRepository().GetAllTechnicalCommites().First();
+
+            var stateInfo = new StateChangeInfo();
+            stateInfo.RecieverUnits.Add(techUnit);
+
+            var justReceivedProblem = ObjectMother.GetWorkflowService().GetNewProblems().First();
+            justReceivedProblem.Request(stateInfo);
+            var res = ObjectMother.GetUnitRepository().GetAllTechnicalCommites().First().Inbox.Documents.Count == 1;
+            Assert.True(res);
+        }
+
+
+        [Fact]
+        [AutoRollback]
+        public void TechnicalCommitiesShouldNotBeAbleToSeeAllProblemsWithTechnicalCommiteState()
+        {
+            ObjectMother.Initialize();
+            ObjectMother.BuildTechnicalCommites();
+            ObjectMother.BuildProblem();
+            ObjectMother.GetUnitOrWork().Commit();
+            var techUnit = ObjectMother.GetUnitRepository().GetAllTechnicalCommites().First();
+
+            var stateInfo = new StateChangeInfo();
+            stateInfo.RecieverUnits.Add(techUnit);
+
+            var justReceivedProblem = ObjectMother.GetWorkflowService().GetNewProblems().First();
+            justReceivedProblem.Request(stateInfo);
+            var res = ObjectMother.GetUnitRepository().GetAllTechnicalCommites().Last().Inbox.Documents.Count == 0;
+            Assert.True(res);
+        }
+
+
+
+
     }
 }
