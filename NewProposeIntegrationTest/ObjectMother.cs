@@ -25,7 +25,6 @@ namespace NewProposeIntegrationTest
             _databaseFactory = new DatabaseFactory();
         }
 
-
         public static IUnitOfWork GetUnitOrWork()
         {
             return new UnitOfWork(_databaseFactory);
@@ -53,18 +52,10 @@ namespace NewProposeIntegrationTest
         
         public static void BuildProblem()
         {
-
-            var problem = GetProblemRepository().Create(BuildUnit());
+            var problem = GetProblemRepository().Create(new Unit() { Name = "Mock Unit" });
             problem.Description = "Mock New Problem";
             problem.Title = "Mock New Problem";
             ObjectMother.GetProblemRepository().Add(problem);         
-        }
-
-
-        public static Unit BuildUnit()
-        {
-            var unit = new Unit() { Name = "Mock Unit" };
-            return unit;
         }
 
         public static RegisterState BuildRegisterState()
@@ -72,7 +63,6 @@ namespace NewProposeIntegrationTest
             var registerState = new RegisterState() { IsCurrent = true };
             return registerState;
         }
-
 
         public static void BuildTechnicalCommites()
         {      
