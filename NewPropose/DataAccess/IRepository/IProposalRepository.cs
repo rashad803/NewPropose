@@ -8,5 +8,6 @@ namespace NewPropose.DataAccess.IRepository
 {
     public interface IProposalRepository : IRepository<Proposal>
     {
+        Proposal Create();
     }
 }

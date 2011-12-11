@@ -8,5 +8,7 @@ namespace NewPropose.DataAccess.IRepository
 {
     public interface IEmployeeRepository : IRepository<Employee>
     {
+        Employee Create();
+
     }
 }

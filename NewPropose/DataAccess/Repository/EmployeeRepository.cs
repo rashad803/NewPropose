@@ -15,5 +15,11 @@ namespace NewPropose.DataAccess.Repository
         {
 
         }
+
+        public Employee Create()
+        {                      
+            var employee = new Employee();   
+            return employee;
+        }
     }
 }

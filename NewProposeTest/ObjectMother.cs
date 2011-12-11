@@ -45,9 +45,9 @@ namespace NewProposeTest
             return unit;
         }
 
-        public static RegisterState BuildRegisterState()
+        public static ProblemRegisterState BuildRegisterState()
         {
-            var registerState = new RegisterState() { IsCurrent = true };
+            var registerState = new ProblemRegisterState() { IsCurrent = true };
             return registerState;
         }
 

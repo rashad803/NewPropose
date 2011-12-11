@@ -13,13 +13,14 @@ namespace NewPropose.Models
         {
             States = new List<ProblemState>();
             Units = new List<Unit>();
+            Proposals = new List<Proposal>();
             Active = true;
         }
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public virtual List<Proposal> Proposals { get; set; }
         public bool Active { get; set; }
+        public virtual List<Proposal> Proposals { get; set; }      
         public virtual List<ProblemState> States { get; set; }
         public virtual List<Comment> Comments { get; set; }
         public virtual List<Unit> Units { get; set; }

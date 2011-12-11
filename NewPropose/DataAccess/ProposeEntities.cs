@@ -7,6 +7,7 @@ using NewPropose.Models;
 using NewPropose.Models.Authorization;
 using NewPropose.Models.Units;
 using NewPropose.Models.ItemStates.ProplemStates;
+using NewPropose.Models.ItemStates.ProposalStates;
 
 namespace NewPropose.DataAccess
 {
@@ -25,18 +26,26 @@ namespace NewPropose.DataAccess
         public DbSet<OrganizationUnit> OrganizationUnits { get; set; }
 
         public DbSet<ProblemState> ProblemStates { get; set; }
-        public DbSet<TechnicalCommitteeState> TechnicalCommitteeStates { get; set; }
-        public DbSet<RegisterState> RegisterStates { get; set; }
-        public DbSet<CancelState> CancelStates { get; set; }
-        public DbSet<SuperCommitteeState> SuperCommitteeStates { get; set; }
-        public DbSet<ConfirmState> ConfirmStates { get; set; }
+        public DbSet<ProblemTechnicalCommitteeState> ProblemTechnicalCommitteeStates { get; set; }
+        public DbSet<ProblemRegisterState> ProblemRegisterStates { get; set; }
+        public DbSet<ProblemCancelState> ProblemCancelStates { get; set; }
+        public DbSet<ProblemSuperCommitteeState> ProblemSuperCommitteeStates { get; set; }
+        public DbSet<ProblemConfirmState> ProblemConfirmStates { get; set; }
+
+        public DbSet<ProposalState> ProposalStates { get; set; }
+        public DbSet<ProposalRegisterState> ProposalRegisterStates { get; set; }
+        public DbSet<ProposalCancelState> ProposalCancelStates { get; set; }
+        public DbSet<ProposalCommiteAliState> ProposalCommiteAliStates { get; set; }
+        public DbSet<ProposalCommiteFaniState> ProposalCommiteFaniStates { get; set; }
+        
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Employee>().HasRequired(emp => emp.Outbox).WithRequiredDependent();
+            //modelBuilder.Entity<Employee>().HasRequired(emp => emp.Outbox).WithRequiredDependent();
             modelBuilder.Entity<Unit>().HasRequired(unit => unit.Inbox).WithRequiredDependent();
 
             modelBuilder.Entity<Problem>().Map(m => m.Requires(p => p.States));
+            modelBuilder.Entity<Proposal>().Map(m => m.Requires(p => p.States));
             
 
             base.OnModelCreating(modelBuilder);

@@ -18,7 +18,7 @@ namespace NewProposeTest
         {
             var repo = ObjectMother.GetProblemRepository();
             var problem = repo.Create(ObjectMother.BuildUnit());
-            Assert.Equal(problem.CurrentState.GetType(), typeof(RegisterState));
+            Assert.Equal(problem.CurrentState.GetType(), typeof(ProblemRegisterState));
         }
 
         [Fact]
@@ -35,7 +35,7 @@ namespace NewProposeTest
             var technicalCommittes = ObjectMother.GetUnitRepository().GetAllTechnicalCommites();
             var justReceivedProblem = ObjectMother.GetWorkflowService().GetNewProblems().First();           
             var transferdProblem = ObjectMother.RegisterStateToTechnicalCommitteeState(justReceivedProblem, technicalCommittes);
-            Assert.Equal(transferdProblem.CurrentState.GetType(), typeof(TechnicalCommitteeState));
+            Assert.Equal(transferdProblem.CurrentState.GetType(), typeof(ProblemTechnicalCommitteeState));
         }
 
         [Fact]
@@ -57,7 +57,6 @@ namespace NewProposeTest
             var workflowService = ObjectMother.GetWorkflowService();
             var problemsThatPeopleCanSee = workflowService.GetPeopleProblems();           
             Assert.NotEqual(problemsThatPeopleCanSee.Count(), 0);
-
         }
 
     }

@@ -19,19 +19,19 @@ namespace NewPropose.DataAccess.Repository
         public Problem Create(Unit unit)
         {
             var problem = new Problem();
-            problem.States.Add(new RegisterState() { IsCurrent = true });
+            problem.States.Add(new ProblemRegisterState() { IsCurrent = true });
             problem.Units.Add(unit);
             return problem;
         }
 
         public IEnumerable<Problem> GetProblemsWithRegisterState()
         {
-            return RequestDb.ProblemStates.OfType<RegisterState>().Select(s => s.Owner);
+            return RequestDb.ProblemStates.OfType<ProblemRegisterState>().Select(s => s.Owner);
         }
 
         public IEnumerable<Problem> GetProblemsWithTechnicalCommitteeState()
         {
-            return RequestDb.ProblemStates.OfType<TechnicalCommitteeState>().Select(s => s.Owner);
+            return RequestDb.ProblemStates.OfType<ProblemTechnicalCommitteeState>().Select(s => s.Owner);
         }
 
 
