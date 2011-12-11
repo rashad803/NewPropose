@@ -7,6 +7,7 @@ using Xunit;
 using NewPropose.Models;
 using NewPropose.Models.ItemStates.ProplemStates;
 using NewPropose.Models.ItemStates;
+using NewPropose.Models.ItemStates.ProposalStates;
 
 namespace NewProposeTest
 {
@@ -58,6 +59,15 @@ namespace NewProposeTest
             var problemsThatPeopleCanSee = workflowService.GetPeopleProblems();           
             Assert.NotEqual(problemsThatPeopleCanSee.Count(), 0);
         }
+
+        [Fact]
+        public void ProposalShouldHaveRegisterStatWhenCreated()
+        {
+            var repo = ObjectMother.GetProposalRepository();
+            var proposal = repo.Create();
+            Assert.Equal(typeof(ProposalRegisterState), proposal.CurrentState.GetType());
+        }
+
 
     }
 }

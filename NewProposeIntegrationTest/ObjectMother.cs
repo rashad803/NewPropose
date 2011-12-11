@@ -110,5 +110,16 @@ namespace NewProposeIntegrationTest
             justReceivedProblem.Request(stateInfo);
             return justReceivedProblem;
         }
+
+        public static Proposal BuildProposal(Problem problem)
+        {
+            BuildEmployee();
+            GetUnitOrWork().Commit();
+            var employee = GetEmployeeRepository().GetAll().First();
+            var proposal = GetProposalRepository().Create();
+            employee.MakeProposal(problem, proposal, "Test Subject 1", "Test Content 1");
+            GetUnitOrWork().Commit();
+            return proposal;
+        }
     }
 }

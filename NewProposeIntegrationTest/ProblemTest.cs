@@ -73,14 +73,15 @@ namespace NewProposeIntegrationTest
 
         [Fact]
         [AutoRollback]
-        public void PeopleShouldBeAbleToMakeAProposeForEachProblem()
+        public void AnEmployeeShouldBeAbleToMakeAProposeForEachProblem()
         {
             ObjectMother.BuildProblemAndChangeStateToTechnicalCommitie();
-            var problemsThatPeopleCanSee = ObjectMother.GetWorkflowService().GetPeopleProblems();
             ObjectMother.BuildEmployee();
             ObjectMother.GetUnitOrWork().Commit();
+
+            var selectedProblem = ObjectMother.GetWorkflowService().GetPeopleProblems().First();
             var employee = ObjectMother.GetEmployeeRepository().GetAll().First();
-            var selectedProblem = problemsThatPeopleCanSee.First();
+           
 
             var countBefore = selectedProblem.Proposals.Count;
 
@@ -88,8 +89,57 @@ namespace NewProposeIntegrationTest
             employee.MakeProposal(selectedProblem, proposal, "Test Subject", "Test Content");
             ObjectMother.GetUnitOrWork().Commit();
 
-            selectedProblem = problemsThatPeopleCanSee.First();
+            selectedProblem = ObjectMother.GetProblemRepository().Load(selectedProblem.Id);
             Assert.Equal(countBefore + 1, selectedProblem.Proposals.Count);
+        }
+
+        [Fact]
+        [AutoRollback]
+        public void EmployeesShouldBeAbleToMakeAProposeForAProblem()
+        {
+            ObjectMother.BuildProblemAndChangeStateToTechnicalCommitie();
+            ObjectMother.BuildEmployee();
+            ObjectMother.BuildEmployee();
+            ObjectMother.GetUnitOrWork().Commit();
+
+            var selectedProblem = ObjectMother.GetWorkflowService().GetPeopleProblems().First();
+            var firstEmployee = ObjectMother.GetEmployeeRepository().GetAll().First();
+            var lastEmployee = ObjectMother.GetEmployeeRepository().GetAll().Last();
+
+            var countBefore = selectedProblem.Proposals.Count;
+
+            var fistProposal = ObjectMother.GetProposalRepository().Create();
+            var secondProposal = ObjectMother.GetProposalRepository().Create();
+            firstEmployee.MakeProposal(selectedProblem, fistProposal, "Test Subject 1", "Test Content 1");
+            lastEmployee.MakeProposal(selectedProblem, secondProposal, "Test Subject 2", "Test Content 2");
+
+            ObjectMother.GetUnitOrWork().Commit();
+
+            selectedProblem = ObjectMother.GetProblemRepository().Load(selectedProblem.Id);
+            Assert.Equal(countBefore + 2, selectedProblem.Proposals.Count);
+        }
+
+        [Fact]
+        [AutoRollback]
+        public void TechnicalCommiteeMemberShouldBeAbleToSeeAllProblemsProposals()
+        {
+            ObjectMother.Initialize();
+            ObjectMother.BuildTechnicalCommites();
+            ObjectMother.BuildProblem();
+            ObjectMother.GetUnitOrWork().Commit();
+            var techUnit = ObjectMother.GetUnitRepository().GetAllTechnicalCommites().First();
+
+            var stateInfo = new StateChangeInfo();
+            stateInfo.RecieverUnits.Add(techUnit);
+
+            var problem = ObjectMother.GetWorkflowService().GetNewProblems().First();
+            problem.Request(stateInfo);
+
+            var proposal = ObjectMother.BuildProposal(problem);
+            ObjectMother.GetUnitOrWork().Commit();
+            techUnit = ObjectMother.GetUnitRepository().GetAllTechnicalCommites().First();
+
+            Assert.True(techUnit.Problems.Single(p => p.Id == problem.Id).Proposals.Any(pr => pr.Id == proposal.Id));
         }
 
 

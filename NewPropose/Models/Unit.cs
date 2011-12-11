@@ -10,6 +10,7 @@ namespace NewPropose.Models
         public Unit()
         {
             Inbox = new Inbox();
+            Problems = new List<Problem>();
         }
         public int Id { get; set; }
         public string Name { get; set; }

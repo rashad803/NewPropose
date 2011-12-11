@@ -9,6 +9,8 @@ using Moq;
 using NewPropose.DataAccess.IRepository;
 using NewPropose.Models.ItemStates.ProplemStates;
 using NewPropose.Models;
+using NewPropose.DataAccess.Repository;
+using NewPropose.DataAccess;
 
 namespace NewProposeTest
 {
@@ -16,10 +18,16 @@ namespace NewProposeTest
     {
         public static IProblemRepository GetProblemRepository()
         {
-            var m = new Mock<IProblemRepository>();
-            m.Setup(repo => repo.Create(It.IsAny<Unit>())).Returns(BuildProblem());
-            //m.Setup(repo => repo.GetNewProblems()).Returns(new List<Problem>() { NewProblem() });            
-            return m.Object;
+            var m = new Mock<IDatabaseFactory>();
+            var repo = new ProblemRepository(m.Object);                     
+            return repo;
+        }
+
+        public static IProposalRepository GetProposalRepository()
+        {
+            var m = new Mock<IDatabaseFactory>();
+            var repo = new ProposalRepository(m.Object);
+            return repo;
         }
 
         public static IWorkflowService GetWorkflowService()
