@@ -35,8 +35,10 @@ namespace NewPropose.DataAccess
         public DbSet<ProposalState> ProposalStates { get; set; }
         public DbSet<ProposalRegisterState> ProposalRegisterStates { get; set; }
         public DbSet<ProposalCancelState> ProposalCancelStates { get; set; }
-        public DbSet<ProposalCommiteAliState> ProposalCommiteAliStates { get; set; }
-        public DbSet<ProposalCommiteFaniState> ProposalCommiteFaniStates { get; set; }
+        public DbSet<ProposalSuperCommitteeState> ProposalCommitteeAliStates { get; set; }
+        public DbSet<ProposalCommitteeFaniState> ProposalCommitteeFaniStates { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
         
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

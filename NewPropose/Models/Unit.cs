@@ -11,6 +11,7 @@ namespace NewPropose.Models
         {
             Inbox = new Inbox();
             Problems = new List<Problem>();
+            Members = new List<Employee>();
         }
         public int Id { get; set; }
         public string Name { get; set; }

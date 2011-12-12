@@ -9,21 +9,21 @@ namespace NewPropose.DataAccess.Repository
 {
     public class UnitRepository : GenericRepository<Unit>, IUnitRepository
     {
-        private const string TechnicalCommite = "TechnicalCommite";
+        private const string TechnicalCommittee = "TechnicalCommittee";
         public UnitRepository(IDatabaseFactory databaseFactory)
             : base(databaseFactory)
         {
 
         }
 
-        public IEnumerable<Unit> GetAllTechnicalCommites()
+        public IEnumerable<Unit> GetAllTechnicalCommittees()
         {
-            return RequestDb.Units.Where(unit => unit.Type == TechnicalCommite);
+            return RequestDb.Units.Where(unit => unit.Type == TechnicalCommittee);
         }
 
-        public Unit CreateTechnicalCommite(string name)
+        public Unit CreateTechnicalCommittee(string name)
         {
-            var unit = new Unit() {Name = name, Type = TechnicalCommite};
+            var unit = new Unit() {Name = name, Type = TechnicalCommittee};
             return unit;
         }
     }

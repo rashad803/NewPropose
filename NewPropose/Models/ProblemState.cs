@@ -17,12 +17,7 @@ namespace NewPropose.Models
         public virtual Problem Owner { get; set; }
         public virtual Employee EmployeeHandler { get; set; }
         public virtual Unit UnitHandler { get; set; }
-        public DateTime Created { get; set; }
-
-        //public abstract void Register(Problem Item);
-        //public abstract void Confirm(Problem Item);
-        //public abstract void Cancel(Problem Item);
-
+        public DateTime Created { get; set; } 
         public abstract void Handle(Problem context,StateChangeInfo stateChangeInfo);
     }
 }

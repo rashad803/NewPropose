@@ -27,22 +27,22 @@ namespace NewProposeTest
         {
             var repo = ObjectMother.GetProblemRepository();
             var problem = repo.Create(ObjectMother.BuildUnit());
-            Assert.Equal(problem.Units.Count, 1);
+            Assert.NotNull(problem.Creator);
         }
 
         [Fact]
         public void SecretariatUnitShouldBeAbleToSendNewProblemToArbitararyUnits()
         {
-            var technicalCommittes = ObjectMother.GetUnitRepository().GetAllTechnicalCommites();
+            var technicalCommittes = ObjectMother.GetUnitRepository().GetAllTechnicalCommittees();
             var justReceivedProblem = ObjectMother.GetWorkflowService().GetNewProblems().First();           
             var transferdProblem = ObjectMother.RegisterStateToTechnicalCommitteeState(justReceivedProblem, technicalCommittes);
             Assert.Equal(transferdProblem.CurrentState.GetType(), typeof(ProblemTechnicalCommitteeState));
         }
 
         [Fact]
-        public void TechnicalCommitiesShouldBeAbleToSeeProblemsWithTechnicalCommiteState()
+        public void TechnicalCommitteesShouldBeAbleToSeeProblemsWithTechnicalCommitteeState()
         {
-            var technicalCommittes = ObjectMother.GetUnitRepository().GetAllTechnicalCommites();
+            var technicalCommittes = ObjectMother.GetUnitRepository().GetAllTechnicalCommittees();
             var justReceivedProblem = ObjectMother.GetWorkflowService().GetNewProblems().First();
             ObjectMother.RegisterStateToTechnicalCommitteeState(justReceivedProblem,technicalCommittes);
             var res = technicalCommittes.First().Inbox.Documents.Any(doc => doc.Id == -1);
@@ -50,9 +50,9 @@ namespace NewProposeTest
         }
 
         [Fact]
-        public void PeopleShouldBeAbleToSeeAllProblemsWithTechnicalCommiteState()
+        public void PeopleShouldBeAbleToSeeAllProblemsWithTechnicalCommitteeState()
         {
-            var technicalCommittes = ObjectMother.GetUnitRepository().GetAllTechnicalCommites();
+            var technicalCommittes = ObjectMother.GetUnitRepository().GetAllTechnicalCommittees();
             var justReceivedProblem = ObjectMother.GetWorkflowService().GetNewProblems().First();
             ObjectMother.RegisterStateToTechnicalCommitteeState(justReceivedProblem, technicalCommittes);
             var workflowService = ObjectMother.GetWorkflowService();
@@ -63,7 +63,7 @@ namespace NewProposeTest
         [Fact]
         public void ProposalShouldHaveRegisterStatWhenCreated()
         {
-            var repo = ObjectMother.GetProposalRepository();
+            var repo = ObjectMother.GetProposalRepository();  
             var proposal = repo.Create();
             Assert.Equal(typeof(ProposalRegisterState), proposal.CurrentState.GetType());
         }

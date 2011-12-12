@@ -64,12 +64,13 @@ namespace NewProposeIntegrationTest
             return new ProposalRepository(_databaseFactory);
         }
 
-        public static void BuildProblem()
+        public static Problem BuildProblem()
         {
             var problem = GetProblemRepository().Create(new Unit() { Name = "Test Unit" });
             problem.Description = "Test New Problem";
             problem.Title = "Test New Problem";
             ObjectMother.GetProblemRepository().Add(problem);
+            return problem;
         }
 
         public static ProblemRegisterState BuildRegisterState()
@@ -78,30 +79,46 @@ namespace NewProposeIntegrationTest
             return registerState;
         }
 
-        public static void BuildTechnicalCommites()
+        public static void BuildTechnicalCommittees()
         {
             var unitRepo = ObjectMother.GetUnitRepository();
-            unitRepo.Add(unitRepo.CreateTechnicalCommite("Test tech unit 1"));
-            unitRepo.Add(unitRepo.CreateTechnicalCommite("Test tech unit 2"));
+            var unit = unitRepo.CreateTechnicalCommittee("Test tech unit 1");
+            unit.Members.Add(BuildEmployee());
+            unit.Members.Add(BuildEmployee());
+            unitRepo.Add(unit);
+            GetUnitOrWork().Commit();
+
+            unit = unitRepo.CreateTechnicalCommittee("Test tech unit 2");
+            unit.Members.Add(BuildEmployee());
+            unit.Members.Add(BuildEmployee());
+            unitRepo.Add(unit);
+            GetUnitOrWork().Commit();
+
+            unit = unitRepo.CreateTechnicalCommittee("Test tech unit 3");
+            unit.Members.Add(BuildEmployee());
+            unit.Members.Add(BuildEmployee());
+            unitRepo.Add(unit);
+            GetUnitOrWork().Commit();
         }
 
-        public static void BuildEmployee()
+        public static Employee BuildEmployee()
         {
             var repository = GetEmployeeRepository();
-            var employee = repository.Create();
+            var employee = new Employee();
             employee.FirstName = "Test First Name";
             employee.LastName = "Test Last Name";
             employee.UserName = "Test User Name";
             repository.Add(employee);
+            return employee;
         }
 
-        public static Problem BuildProblemAndChangeStateToTechnicalCommitie()
+        public static Problem BuildProblemAndChangeStateToTechnicalCommittee()
         {
             ObjectMother.Initialize();
-            ObjectMother.BuildTechnicalCommites();
+            ObjectMother.BuildTechnicalCommittees();
             ObjectMother.BuildProblem();
             ObjectMother.GetUnitOrWork().Commit();
-            var techUnit = ObjectMother.GetUnitRepository().GetAllTechnicalCommites().First();
+            var techUnit = ObjectMother.GetUnitRepository().GetAllTechnicalCommittees().First();
 
             var stateInfo = new StateChangeInfo();
             stateInfo.RecieverUnits.Add(techUnit);
@@ -111,14 +128,23 @@ namespace NewProposeIntegrationTest
             return justReceivedProblem;
         }
 
+        public static Problem BuildProblemAndChangeStateToTechnicalCommittee(List<Unit> technicalCommittees)
+        {
+            ObjectMother.Initialize();
+
+            var stateInfo = new StateChangeInfo();
+            technicalCommittees.ForEach(tc => stateInfo.RecieverUnits.Add(tc));
+            ObjectMother.GetUnitOrWork().Commit();
+            var justReceivedProblem = ObjectMother.BuildProblem();
+            justReceivedProblem.Request(stateInfo);
+            return justReceivedProblem;
+        }
+
         public static Proposal BuildProposal(Problem problem)
         {
-            BuildEmployee();
-            GetUnitOrWork().Commit();
-            var employee = GetEmployeeRepository().GetAll().First();
+            var employee = BuildEmployee();
             var proposal = GetProposalRepository().Create();
             employee.MakeProposal(problem, proposal, "Test Subject 1", "Test Content 1");
-            GetUnitOrWork().Commit();
             return proposal;
         }
     }

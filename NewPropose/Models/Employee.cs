@@ -42,6 +42,7 @@ namespace NewPropose.Models
             proposal.Subject = subject;
             proposal.Content = content;
             Proposals.Add(proposal);
+            proposal.Problem = selectedProblem;
             selectedProblem.Proposals.Add(proposal);
         }
     }

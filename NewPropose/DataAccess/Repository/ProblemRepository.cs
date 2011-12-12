@@ -20,7 +20,7 @@ namespace NewPropose.DataAccess.Repository
         {
             var problem = new Problem();
             problem.States.Add(new ProblemRegisterState() { IsCurrent = true });
-            problem.Units.Add(unit);
+            problem.Creator = unit;
             return problem;
         }
 

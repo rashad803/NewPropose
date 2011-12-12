@@ -127,7 +127,7 @@
     <Compile Include="Models\ItemStates\ProplemStates\ProblemConfirmState.cs" />
     <Compile Include="Models\ItemStates\ProplemStates\ProblemCancelState.cs" />
     <Compile Include="Models\ItemStates\ProposalStates\ProposalCancelState.cs" />
-    <Compile Include="Models\ItemStates\ProposalStates\ProposalCommiteAliState.cs" />
+    <Compile Include="Models\ItemStates\ProposalStates\ProposalSuperCommitteeState.cs" />
     <Compile Include="Models\ItemStates\ProposalStates\ProposalTechnicalCommitteeState.cs" />
     <Compile Include="Models\ItemStates\ProposalStates\ProposalRegisterState.cs" />
     <Compile Include="Models\ItemStates\StateChangeInfo.cs" />

@@ -12,7 +12,7 @@ namespace NewPropose.Models
         public Problem()
         {
             States = new List<ProblemState>();
-            Units = new List<Unit>();
+            Receivers = new List<Inbox>();
             Proposals = new List<Proposal>();
             Active = true;
         }
@@ -20,10 +20,11 @@ namespace NewPropose.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public bool Active { get; set; }
+        public Unit Creator { get; set; }
         public virtual List<Proposal> Proposals { get; set; }      
         public virtual List<ProblemState> States { get; set; }
         public virtual List<Comment> Comments { get; set; }
-        public virtual List<Unit> Units { get; set; }
+        public virtual List<Inbox> Receivers { get; set; }
         [NotMapped]
         public ProblemState CurrentState { get { return States.Single(s => s.IsCurrent == true);} private set{} }
 

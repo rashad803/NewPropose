@@ -22,6 +22,7 @@ namespace NewPropose.Models
         public string Subject { get; set; }
         public string Content { get; set; }
         public DateTime Created { get; set; }
+        public Problem Problem { get; set; }
         [NotMapped]
         public ProposalState CurrentState { get { return States.Single(s => s.IsCurrent == true); } private set { } }
         public void Request(StateChangeInfo stateChangeInfo)

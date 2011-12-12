@@ -11,19 +11,15 @@ namespace NewPropose.Models
         public ProposalState()
         {
             Created = DateTime.Now;
+            Comments = new List<Comment>();
         }
         public int Id { get; set; }
         public bool IsCurrent { get; set; }
         public virtual Proposal Owner { get; set; }
         public virtual Employee EmployeeHandler { get; set; }
+        public List<Comment> Comments { get; set; }
         public DateTime Created { get; set; }
-
-        public abstract void Handle(Proposal context, StateChangeInfo stateChangeInfo);
-
         public virtual Unit UnitHandler { get; set; }
-
-        //public abstract void Register(Proposal Item);
-        //public abstract void Confirm(Proposal Item);
-        //public abstract void Cancel(Proposal Item);
+        public abstract void Handle(Proposal context, StateChangeInfo stateChangeInfo);          
     }
 }

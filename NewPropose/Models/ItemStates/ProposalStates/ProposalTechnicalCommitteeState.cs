@@ -5,7 +5,7 @@ using System.Web;
 
 namespace NewPropose.Models.ItemStates.ProposalStates
 {
-    public class ProposalCommiteFaniState : ProposalState
+    public class ProposalCommitteeFaniState : ProposalState
     {
         public override void Handle(Proposal context, StateChangeInfo stateChangeInfo)
         {

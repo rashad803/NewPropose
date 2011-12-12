@@ -42,8 +42,8 @@ namespace NewProposeTest
         {
             var m = new Mock<IUnitRepository>();
             var unit = BuildUnit();
-            unit.Type = "TechnicalCommite";
-            m.Setup(repo => repo.GetAllTechnicalCommites()).Returns(new List<Unit>() { unit });
+            unit.Type = "TechnicalCommittee";
+            m.Setup(repo => repo.GetAllTechnicalCommittees()).Returns(new List<Unit>() { unit });
             return m.Object;
         }
 
@@ -66,7 +66,7 @@ namespace NewProposeTest
             problem.Description = "Mock New Problem";
             problem.Title = "Mock New Problem";
             problem.States.Add(BuildRegisterState());
-            problem.Units.Add(BuildUnit());
+            problem.Creator = BuildUnit();
             return problem;
         }
 
