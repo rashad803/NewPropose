@@ -51,3 +51,15 @@ C:\root\development\playground\NewPropose\NewPropose\bin\StructureMap.xml
 C:\root\development\playground\NewPropose\NewPropose\obj\Debug\ResolveAssemblyReference.cache
 C:\root\development\playground\NewPropose\NewPropose\obj\Debug\NewPropose.dll
 C:\root\development\playground\NewPropose\NewPropose\obj\Debug\NewPropose.pdb
+C:\root\development\playground\Practice\NewPropose\NewPropose\NewPropose\obj\Debug\ResolveAssemblyReference.cache
+C:\root\development\playground\Practice\NewPropose\NewPropose\NewPropose\obj\Debug\NewPropose.dll
+C:\root\development\playground\Practice\NewPropose\NewPropose\NewPropose\obj\Debug\NewPropose.pdb
+C:\root\development\playground\Practice\NewPropose\NewPropose\NewPropose\bin\NewPropose.dll
+C:\root\development\playground\Practice\NewPropose\NewPropose\NewPropose\bin\NewPropose.pdb
+C:\root\development\playground\Practice\NewPropose\NewPropose\NewPropose\bin\EntityFramework.dll
+C:\root\development\playground\Practice\NewPropose\NewPropose\NewPropose\bin\Microsoft.Web.Infrastructure.dll
+C:\root\development\playground\Practice\NewPropose\NewPropose\NewPropose\bin\StructureMap.dll
+C:\root\development\playground\Practice\NewPropose\NewPropose\NewPropose\bin\WebActivator.dll
+C:\root\development\playground\Practice\NewPropose\NewPropose\NewPropose\bin\EntityFramework.xml
+C:\root\development\playground\Practice\NewPropose\NewPropose\NewPropose\bin\StructureMap.pdb
+C:\root\development\playground\Practice\NewPropose\NewPropose\NewPropose\bin\StructureMap.xml

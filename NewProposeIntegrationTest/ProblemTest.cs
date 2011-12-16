@@ -168,6 +168,9 @@ namespace NewProposeIntegrationTest
             Assert.Equal(typeof(ProposalRegisterState), proposal.CurrentState.GetType());
         }
 
+        public void test()
+        {}
+
 
     }
 }
