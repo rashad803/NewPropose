@@ -5,6 +5,7 @@ using System.Web;
 using NewPropose.Models;
 using NewPropose.DataAccess.IRepository;
 using NewPropose.Models.ItemStates.ProplemStates;
+using NewPropose.Models.ItemStates.ProposalStates;
 
 namespace NewPropose.DataAccess.Repository
 {
@@ -26,12 +27,19 @@ namespace NewPropose.DataAccess.Repository
 
         public IEnumerable<Problem> GetProblemsWithRegisterState()
         {
-            return RequestDb.ProblemStates.OfType<ProblemRegisterState>().Select(s => s.Owner);
+            return RequestDb.ProblemStates.OfType<ProblemRegisterState>().Where(s => s.IsCurrent == true).Select(s => s.Owner);
         }
 
         public IEnumerable<Problem> GetProblemsWithTechnicalCommitteeState()
         {
-            return RequestDb.ProblemStates.OfType<ProblemTechnicalCommitteeState>().Select(s => s.Owner);
+            return RequestDb.ProblemStates.OfType<ProblemTechnicalCommitteeState>().Where(s => s.IsCurrent == true).Select(s => s.Owner);
+        }
+
+        public IEnumerable<Problem> GetProblemsForSuperCommitee()
+        {
+            return
+                RequestDb.Problems.Where(
+                    p => p.Proposals.Any(problem => problem.States.OfType<ProposalSuperCommitteeState>().Where(s => s.IsCurrent == true).Count() > 0));
         }
 
 

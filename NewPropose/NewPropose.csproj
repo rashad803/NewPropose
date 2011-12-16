@@ -124,8 +124,9 @@
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\ItemStates\ProplemStates\ProblemSuperCommitteeState.cs" />
     <Compile Include="Models\ItemStates\ProplemStates\ProblemTechnicalCommitteeState.cs" />
-    <Compile Include="Models\ItemStates\ProplemStates\ProblemConfirmState.cs" />
+    <Compile Include="Models\ItemStates\ProplemStates\ProblemAcceptedState.cs" />
     <Compile Include="Models\ItemStates\ProplemStates\ProblemCancelState.cs" />
+    <Compile Include="Models\ItemStates\ProposalStates\ProposalAcceptedState.cs" />
     <Compile Include="Models\ItemStates\ProposalStates\ProposalCancelState.cs" />
     <Compile Include="Models\ItemStates\ProposalStates\ProposalSuperCommitteeState.cs" />
     <Compile Include="Models\ItemStates\ProposalStates\ProposalTechnicalCommitteeState.cs" />

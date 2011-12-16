@@ -18,7 +18,7 @@ namespace NewPropose.Models.ItemStates.ProposalStates
             comment.IsAccepted = stateChangeInfo.IsAccepted;
             comment.Problem = context.Problem;
             comment.Proposal = context;
-            comment.Unit = stateChangeInfo.Committee;
+            comment.Unit = stateChangeInfo.UnitHandler;
             Comments.Add(comment);
 
             if (HaveAllUnitsGivenOpinion(context))
@@ -27,19 +27,19 @@ namespace NewPropose.Models.ItemStates.ProposalStates
                 Comments.ForEach(c => result = result || c.IsAccepted);
                 if (result)
                 {
-                    EmployeeHandler = stateChangeInfo.EmployeeHandler;
-                    UnitHandler = stateChangeInfo.UnitHandler;
+            
                     IsCurrent = false;
                     var newState = new ProposalSuperCommitteeState();
                     newState.IsCurrent = true;
+                    context.States.Add(newState);
                 }
                 else
                 {
-                    EmployeeHandler = stateChangeInfo.EmployeeHandler;
-                    UnitHandler = stateChangeInfo.UnitHandler;
+               
                     IsCurrent = false;
                     var newState = new ProposalCancelState();
                     newState.IsCurrent = true;
+                    context.States.Add(newState);
                 }
             }          
         }

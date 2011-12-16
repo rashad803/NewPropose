@@ -10,6 +10,7 @@ namespace NewPropose.DataAccess.IRepository
     {
         Problem Create(Unit unit);
         IEnumerable<Problem> GetProblemsWithRegisterState();
-        IEnumerable<Problem> GetProblemsWithTechnicalCommitteeState();     
+        IEnumerable<Problem> GetProblemsWithTechnicalCommitteeState();
+        IEnumerable<Problem> GetProblemsForSuperCommitee();
     }
 }

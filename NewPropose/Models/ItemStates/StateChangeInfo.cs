@@ -14,8 +14,7 @@ namespace NewPropose.Models.ItemStates
         public IList<Unit> RecieverUnits { get; set; }
         public string Description { get; set; }
         public string Reason { get; set; }
-        public bool IsAccepted { get; set; }
-        public Unit Committee { get; set; }
+        public bool IsAccepted { get; set; }        
         public Employee EmployeeHandler { get; set; }
         public Unit UnitHandler { get; set; }
     }

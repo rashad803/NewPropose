@@ -6,5 +6,6 @@ namespace NewPropose.Models.Services
     {
         IEnumerable<Problem> GetPeopleProblems();
         IEnumerable<Problem> GetNewProblems();
+        IEnumerable<Problem> GetProblemsForSuperCommitee();
     }
 }

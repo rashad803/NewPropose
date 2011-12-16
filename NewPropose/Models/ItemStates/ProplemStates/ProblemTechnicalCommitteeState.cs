@@ -9,7 +9,10 @@ namespace NewPropose.Models.ItemStates.ProplemStates
     {
         public override void Handle(Problem context,StateChangeInfo stateChangeInfo)
         {
-            throw new NotImplementedException();
+            var newState = new ProblemAcceptedState();
+            newState.IsCurrent = true;
+            context.CurrentState.IsCurrent = false;
+            context.States.Add(newState);           
         }
     }
 }

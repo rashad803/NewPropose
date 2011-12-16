@@ -159,7 +159,7 @@ namespace NewProposeIntegrationTest
             changeInfo.Description = "Test Description";
             changeInfo.Reason = "Test Reason";
             changeInfo.IsAccepted = false;
-            changeInfo.Committee = tc;
+      
             changeInfo.EmployeeHandler = tc.Members.First();
             changeInfo.UnitHandler = tc;
             proposal.Request(changeInfo);
@@ -168,9 +168,165 @@ namespace NewProposeIntegrationTest
             Assert.Equal(typeof(ProposalRegisterState), proposal.CurrentState.GetType());
         }
 
-        public void test()
-        {}
 
+        [Fact]
+        [AutoRollback]
+        public void ProposalStateShouldChangeToCancelWhenAllTechnicalCommitteesCancelIt()
+        {
+            ObjectMother.Initialize();
+            ObjectMother.BuildTechnicalCommittees();
+            ObjectMother.GetUnitOrWork().Commit();
+            var techCommittees = ObjectMother.GetUnitRepository().GetAllTechnicalCommittees();
+            var problem = ObjectMother.BuildProblemAndChangeStateToTechnicalCommittee(techCommittees.ToList());
+            var proposal = ObjectMother.BuildProposal(problem);
+            ObjectMother.GetUnitOrWork().Commit();
+            
+            foreach (var tc in techCommittees)
+            {
+                if (tc.Inbox.Documents.Any(d => d.Id == problem.Id))
+                {
+                    var changeInfo = new StateChangeInfo();
+                    changeInfo.Description = "Test Description";
+                    changeInfo.Reason = "Test Reason";
+                    changeInfo.IsAccepted = false;
+                   
+                    changeInfo.EmployeeHandler = tc.Members.First();
+                    changeInfo.UnitHandler = tc;
+                    proposal.Request(changeInfo);
+                    ObjectMother.GetUnitOrWork().Commit();
+                }
+            }                                    
+            Assert.Equal(typeof(ProposalCancelState), proposal.CurrentState.GetType());
+        }
+
+
+        [Fact]
+        [AutoRollback]
+        public void ProposalStateShouldChangeToSuperCommitteStateWhenAtLeastOneTechnicalCommitteesAcceptIt()
+        {
+            ObjectMother.Initialize();
+            ObjectMother.BuildTechnicalCommittees();
+            ObjectMother.GetUnitOrWork().Commit();
+            var techCommittees = ObjectMother.GetUnitRepository().GetAllTechnicalCommittees();
+            var problem = ObjectMother.BuildProblemAndChangeStateToTechnicalCommittee(techCommittees.ToList());
+            var proposal = ObjectMother.BuildProposal(problem);
+            ObjectMother.GetUnitOrWork().Commit();
+            var beforCounte = ObjectMother.GetWorkflowService().GetProblemsForSuperCommitee().Count();
+            bool first = true;
+            foreach (var tc in techCommittees)
+            {
+                if (tc.Inbox.Documents.Any(d => d.Id == problem.Id))
+                {
+                    var changeInfo = new StateChangeInfo();
+                    changeInfo.Description = "Test Description";
+                    changeInfo.Reason = "Test Reason";
+                    if (first)
+                    {
+                        first = false;
+                        changeInfo.IsAccepted = true;
+                    }
+                   
+                    changeInfo.EmployeeHandler = tc.Members.First();
+                    changeInfo.UnitHandler = tc;
+                    proposal.Request(changeInfo);
+                    ObjectMother.GetUnitOrWork().Commit();
+                }
+            }
+            proposal = ObjectMother.GetProposalRepository().Load(proposal.Id);
+            Assert.Equal(typeof(ProposalSuperCommitteeState), proposal.CurrentState.GetType());
+           
+        }
+
+        [Fact]
+        [AutoRollback]
+        public void SuperCommitteeShouldNotBeToSeeProblemsWithoutAcceptedProposal()
+        {
+            ObjectMother.Initialize();
+            ObjectMother.BuildTechnicalCommittees();
+            ObjectMother.GetUnitOrWork().Commit();
+            var beforCount = ObjectMother.GetWorkflowService().GetProblemsForSuperCommitee().Count();
+            var techCommittees = ObjectMother.GetUnitRepository().GetAllTechnicalCommittees();
+            var problem = ObjectMother.BuildProblemAndChangeStateToTechnicalCommittee(techCommittees.ToList());
+            var proposal = ObjectMother.BuildProposal(problem);
+            ObjectMother.GetUnitOrWork().Commit();
+            var tc = techCommittees.First();
+            var changeInfo = new StateChangeInfo();
+            changeInfo.Description = "Test Description";
+            changeInfo.Reason = "Test Reason";
+            changeInfo.IsAccepted = false;
+          
+            changeInfo.EmployeeHandler = tc.Members.First();
+            changeInfo.UnitHandler = tc;
+            proposal.Request(changeInfo);
+            ObjectMother.GetUnitOrWork().Commit();
+            Assert.Equal(beforCount, ObjectMother.GetWorkflowService().GetProblemsForSuperCommitee().Count());
+        }
+
+
+        [Fact]
+        [AutoRollback]
+        public void SuperCommitteeShouldBeToSeeProblemsWithAcceptedProposal()
+        {
+            ObjectMother.Initialize();
+            ObjectMother.BuildTechnicalCommittees();
+            ObjectMother.GetUnitOrWork().Commit();
+            var beforeCount = ObjectMother.GetWorkflowService().GetProblemsForSuperCommitee().Count();
+            var problem = ObjectMother.BuildOneProblemWithAnAccpetedProposal();
+            Assert.Equal(beforeCount + 1, ObjectMother.GetWorkflowService().GetProblemsForSuperCommitee().Count());
+        }
+
+        [Fact]
+        [AutoRollback]
+        public void SuperCommitteShouldBeAbleCancelProposal()
+        {
+            ObjectMother.Initialize();
+            ObjectMother.BuildTechnicalCommittees();
+            ObjectMother.BuildSuperCommittee();            
+            ObjectMother.GetUnitOrWork().Commit();           
+            var problem = ObjectMother.BuildOneProblemWithAnAccpetedProposal();
+            var beforeCount = ObjectMother.GetWorkflowService().GetProblemsForSuperCommitee().Count();
+            var proposal = problem.Proposals.Single(p => p.States.OfType<ProposalSuperCommitteeState>().Count() > 0);
+            var handlerUnit = ObjectMother.GetUnitRepository().GetAllSuperCommittees().First();
+            var stateChangeInfo = new StateChangeInfo();
+            stateChangeInfo.UnitHandler = handlerUnit;
+            stateChangeInfo.IsAccepted = false;
+            stateChangeInfo.Description = "Test Cancel Description";
+            stateChangeInfo.Reason = "Test Cancel Reason";
+            proposal.Request(stateChangeInfo);
+            ObjectMother.GetUnitOrWork().Commit();
+            proposal = ObjectMother.GetProposalRepository().Load(proposal.Id);
+            Assert.Equal(typeof(ProposalCancelState),proposal.CurrentState.GetType());
+            Assert.Equal(beforeCount - 1, ObjectMother.GetWorkflowService().GetProblemsForSuperCommitee().Count());
+        }
+
+
+        [Fact]
+        [AutoRollback]
+        public void SuperCommitteShouldBeAbleAcceptProposal()
+        {
+            ObjectMother.Initialize();
+            ObjectMother.BuildTechnicalCommittees();
+            ObjectMother.BuildSuperCommittee();
+            ObjectMother.GetUnitOrWork().Commit();
+            var problem = ObjectMother.BuildOneProblemWithAnAccpetedProposal();
+            var beforeCountSuperCommitteeProblems = ObjectMother.GetWorkflowService().GetProblemsForSuperCommitee().Count();
+            var beforeCountPeopleProblems = ObjectMother.GetWorkflowService().GetPeopleProblems().Count();
+            var proposal = problem.Proposals.Single(p => p.States.OfType<ProposalSuperCommitteeState>().Count() > 0);
+            var handlerUnit = ObjectMother.GetUnitRepository().GetAllSuperCommittees().First();
+            var stateChangeInfo = new StateChangeInfo();
+            stateChangeInfo.UnitHandler = handlerUnit;
+            stateChangeInfo.IsAccepted = true;
+            stateChangeInfo.Description = "Test Cancel Description";
+            stateChangeInfo.Reason = "Test Cancel Reason";
+            proposal.Request(stateChangeInfo);
+            ObjectMother.GetUnitOrWork().Commit();
+            proposal = ObjectMother.GetProposalRepository().Load(proposal.Id);
+            problem = ObjectMother.GetProblemRepository().Load(problem.Id);
+            Assert.Equal(typeof(ProposalAcceptedState), proposal.CurrentState.GetType());
+            Assert.Equal(typeof(ProblemAcceptedState),problem.CurrentState.GetType());
+            Assert.Equal(beforeCountSuperCommitteeProblems - 1, ObjectMother.GetWorkflowService().GetProblemsForSuperCommitee().Count());
+            Assert.Equal(beforeCountPeopleProblems - 1,ObjectMother.GetWorkflowService().GetPeopleProblems().Count());
+        }
 
     }
 }

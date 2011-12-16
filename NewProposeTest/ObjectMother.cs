@@ -49,7 +49,8 @@ namespace NewProposeTest
 
         public static Unit BuildUnit()
         {
-            var unit = new Unit() { Name = "Mock Unit" };            
+            var inbox = new Inbox();
+            var unit = new Unit() { Name = "Mock Unit", Inbox = inbox };            
             return unit;
         }
 

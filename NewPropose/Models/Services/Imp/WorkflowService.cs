@@ -26,5 +26,10 @@ namespace NewPropose.Models.Services.Imp
         {
             return _problemRepository.GetProblemsWithRegisterState();                
         }
+
+        public IEnumerable<Problem> GetProblemsForSuperCommitee()
+        {
+            return _problemRepository.GetProblemsForSuperCommitee();
+        }
     }
 }

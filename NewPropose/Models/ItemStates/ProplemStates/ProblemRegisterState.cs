@@ -14,9 +14,7 @@ namespace NewPropose.Models.ItemStates.ProplemStates
             context.CurrentState.IsCurrent = false;
             context.States.Add(newState);
             context.Receivers.AddRange(stateChangeInfo.RecieverUnits.Select(u => u.Inbox));
-            stateChangeInfo.RecieverUnits.ToList().ForEach(unit => { 
-                unit.Inbox.Documents.Add(context);                
-            });
+            stateChangeInfo.RecieverUnits.ToList().ForEach(unit => unit.Inbox.Documents.Add(context));
         }
     }
 }

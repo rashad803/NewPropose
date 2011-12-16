@@ -9,7 +9,7 @@ namespace NewPropose.Models
     {
         public Unit()
         {
-            Inbox = new Inbox();
+            //Inbox = new Inbox();
             Problems = new List<Problem>();
             Members = new List<Employee>();
         }

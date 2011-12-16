@@ -66,7 +66,7 @@ namespace NewProposeIntegrationTest
 
         public static Problem BuildProblem()
         {
-            var problem = GetProblemRepository().Create(new Unit() { Name = "Test Unit" });
+            var problem = GetProblemRepository().Create(GetUnitRepository().CreateTechnicalCommittee("Test Unit" ));
             problem.Description = "Test New Problem";
             problem.Title = "Test New Problem";
             ObjectMother.GetProblemRepository().Add(problem);
@@ -95,6 +95,16 @@ namespace NewProposeIntegrationTest
             GetUnitOrWork().Commit();
 
             unit = unitRepo.CreateTechnicalCommittee("Test tech unit 3");
+            unit.Members.Add(BuildEmployee());
+            unit.Members.Add(BuildEmployee());
+            unitRepo.Add(unit);
+            GetUnitOrWork().Commit();
+        }
+
+        public static void BuildSuperCommittee()
+        {
+            var unitRepo = ObjectMother.GetUnitRepository();
+            var unit = unitRepo.CreateSuperCommittee("Test tech unit 1");
             unit.Members.Add(BuildEmployee());
             unit.Members.Add(BuildEmployee());
             unitRepo.Add(unit);
@@ -130,7 +140,7 @@ namespace NewProposeIntegrationTest
 
         public static Problem BuildProblemAndChangeStateToTechnicalCommittee(List<Unit> technicalCommittees)
         {
-            ObjectMother.Initialize();
+           // ObjectMother.Initialize();
 
             var stateInfo = new StateChangeInfo();
             technicalCommittees.ForEach(tc => stateInfo.RecieverUnits.Add(tc));
@@ -146,6 +156,36 @@ namespace NewProposeIntegrationTest
             var proposal = GetProposalRepository().Create();
             employee.MakeProposal(problem, proposal, "Test Subject 1", "Test Content 1");
             return proposal;
+        }
+
+        public static Problem BuildOneProblemWithAnAccpetedProposal()
+        {        
+            var techCommittees = ObjectMother.GetUnitRepository().GetAllTechnicalCommittees();
+            var problem = ObjectMother.BuildProblemAndChangeStateToTechnicalCommittee(techCommittees.ToList());
+            var proposal = ObjectMother.BuildProposal(problem);
+            ObjectMother.GetUnitOrWork().Commit();
+            var beforCounte = ObjectMother.GetProblemRepository().GetProblemsForSuperCommitee().Count();
+            bool first = true;
+            foreach (var tc in techCommittees)
+            {
+                if (tc.Inbox.Documents.Any(d => d.Id == problem.Id))
+                {
+                    var changeInfo = new StateChangeInfo();
+                    changeInfo.Description = "Test Description";
+                    changeInfo.Reason = "Test Reason";
+                    if (first)
+                    {
+                        first = false;
+                        changeInfo.IsAccepted = true;
+                    }
+                   
+                    changeInfo.EmployeeHandler = tc.Members.First();
+                    changeInfo.UnitHandler = tc;
+                    proposal.Request(changeInfo);
+                    ObjectMother.GetUnitOrWork().Commit();
+                }
+            }
+            return problem;
         }
     }
 }

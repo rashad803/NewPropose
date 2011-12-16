@@ -8,18 +8,18 @@
   </SettingsComponent>
   <CompletionStatisticsManager>
     <ItemStatistics item="Default">
-      <Item value="public" priority="16" />
+      <Item value="public" priority="17" />
       <Item value="Problem`0" priority="6" />
       <Item value="problem" priority="4" />
       <Item value="throw" priority="0" />
-      <Item value="new" priority="13" />
+      <Item value="new" priority="15" />
       <Item value="NotImplementedException" priority="0" />
       <Item value="static" priority="14" />
       <Item value="return" priority="10" />
-      <Item value="var" priority="13" />
+      <Item value="var" priority="15" />
       <Item value="ObjectMother`0" priority="7" />
       <Item value="justReceivedProblem" priority="1" />
-      <Item value="Unit`0" priority="4" />
+      <Item value="Unit`0" priority="5" />
       <Item value="IEnumerable" priority="1" />
       <Item value="technicalCommitte" priority="0" />
       <Item value="m" priority="1" />
@@ -28,7 +28,7 @@
       <Item value="service" priority="1" />
       <Item value="s" priority="1" />
       <Item value="NewProblem`0" priority="0" />
-      <Item value="void" priority="3" />
+      <Item value="void" priority="4" />
       <Item value="using" priority="2" />
       <Item value="Xunit" priority="2" />
       <Item value="Sdk" priority="1" />
@@ -46,7 +46,7 @@
       <Item value="afterCount" priority="0" />
       <Item value="beforeCount" priority="0" />
       <Item value="Fact" priority="2" />
-      <Item value="modelBuilder" priority="1" />
+      <Item value="modelBuilder" priority="2" />
       <Item value="ProblemState`0" priority="0" />
       <Item value="p" priority="0" />
       <Item value="Active" priority="0" />
@@ -54,8 +54,8 @@
       <Item value="GetProblemRepository`0" priority="1" />
       <Item value="unitRepo" priority="2" />
       <Item value="Unit" priority="0" />
-      <Item value="RequestDb" priority="2" />
-      <Item value="unit" priority="1" />
+      <Item value="RequestDb" priority="3" />
+      <Item value="unit" priority="3" />
       <Item value="string" priority="1" />
       <Item value="Name" priority="0" />
       <Item value="name" priority="0" />
@@ -86,6 +86,9 @@
       <Item value="object" priority="0" />
       <Item value="AppDomainInitializer`0" priority="0" />
       <Item value="countBefore" priority="0" />
+      <Item value="Inbox`0" priority="1" />
+      <Item value="inbox" priority="6" />
+      <Item value="Inbox" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@NewProposeTest.ObjectMother">
       <Item value="RegisterStateToTechnicalCommitteeState`0" priority="0" />
@@ -129,10 +132,11 @@
       <Item value="Select`2" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Data.Entity.DbModelBuilder">
-      <Item value="Entity`1" priority="1" />
+      <Item value="Entity`1" priority="2" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Data.Entity.ModelConfiguration.EntityTypeConfiguration`1">
       <Item value="Map`1" priority="0" />
+      <Item value="HasRequired`1" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Data.Entity.ModelConfiguration.Configuration.EntityMappingConfiguration`1">
       <Item value="Requires`1" priority="0" />
@@ -152,10 +156,12 @@
       <Item value="Units" priority="0" />
       <Item value="Problems" priority="0" />
       <Item value="ProblemStates" priority="0" />
+      <Item value="Inboxes" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Data.Entity.DbSet`1">
       <Item value="Where`1" priority="0" />
       <Item value="OfType`1" priority="0" />
+      <Item value="Add`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:NewPropose.Models.Unit">
       <Item value="Type" priority="0" />
@@ -179,42 +185,43 @@
     <ItemStatistics item="Qualified:NewPropose.Models.ItemStates.ProplemStates.RegisterState">
       <Item value="Owner" priority="0" />
     </ItemStatistics>
+    <ItemStatistics item="Qualified:NewPropose.Models.Inbox">
+      <Item value="Owner" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.Entity.ModelConfiguration.Configuration.RequiredNavigationPropertyConfiguration`2">
+      <Item value="WithRequiredPrincipal`0" priority="1" />
+    </ItemStatistics>
   </CompletionStatisticsManager>
   <RecentFiles>
     <RecentFiles>
       <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:Models/d:Services/f:IWorkflowService.cs" caret="221" fromTop="7" />
-      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:Models/d:ItemStates/d:ProplemStates/f:TechnicalCommitteeState.cs" caret="687" fromTop="25" />
-      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:DataAccess/f:ProposeEntities.cs" caret="1749" fromTop="38" />
-      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:DataAccess/f:UnitOfWork.cs" caret="370" fromTop="14" />
-      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:Models/f:Problem.cs" caret="847" fromTop="23" />
       <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:DataAccess/d:IRepository/f:IUnitRepository.cs" caret="334" fromTop="11" />
-      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:Models/d:ItemStates/f:StateChangeInfo.cs" caret="190" fromTop="9" />
-      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:DataAccess/d:Repository/f:GenericRepository.cs" caret="1700" fromTop="12" />
       <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:Models/f:IIdentifier.cs" caret="145" fromTop="7" />
       <File id="A98A1C42-5EE9-40D8-872A-DAD1833A2D31/f:ObjectMother.cs" caret="2235" fromTop="18" />
-      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:DataAccess/d:Repository/f:UnitRepository.cs" caret="807" fromTop="26" />
       <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:DataAccess/d:IRepository/f:IProblemStateRepository.cs" caret="190" fromTop="6" />
       <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:DataAccess/d:IRepository/f:IProblemRepository.cs" caret="187" fromTop="8" />
       <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:DataAccess/d:Repository/f:ProblemRepository.cs" caret="337" fromTop="2" />
       <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:DataAccess/d:Repository/f:ProblemStateRepository.cs" caret="464" fromTop="14" />
       <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:Models/d:Services/d:Imp/f:WorkflowService.cs" caret="1003" fromTop="29" />
-      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ProblemTest.cs" caret="3181" fromTop="61" />
-      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ObjectMother.cs" caret="2369" fromTop="28" />
       <File id="A98A1C42-5EE9-40D8-872A-DAD1833A2D31/f:ProblemTest.cs" caret="2683" fromTop="33" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:Models/d:ItemStates/d:ProposalStates/f:ProposalTechnicalCommitteeState.cs" caret="382" fromTop="13" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:Models/d:ItemStates/d:ProposalStates/f:ProposalSuperCommitteeState.cs" caret="312" fromTop="11" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:DataAccess/d:Repository/f:GenericRepository.cs" caret="521" fromTop="14" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:Models/f:Proposal.cs" caret="1054" fromTop="26" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:Models/f:Inbox.cs" caret="320" fromTop="14" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:Models/f:Employee.cs" caret="1541" fromTop="32" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:Models/d:ItemStates/f:StateChangeInfo.cs" caret="275" fromTop="12" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:Models/f:Problem.cs" caret="1211" fromTop="27" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:Models/d:ItemStates/d:ProplemStates/f:ProblemRegisterState.cs" caret="777" fromTop="21" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:DataAccess/f:ProposeEntities.cs" caret="1500" fromTop="22" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:Models/d:ItemStates/d:ProposalStates/f:ProposalRegisterState.cs" caret="1779" fromTop="40" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:Models/f:Unit.cs" caret="216" fromTop="11" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:DataAccess/d:Repository/f:UnitRepository.cs" caret="486" fromTop="16" />
+      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ProblemTest.cs" caret="6945" fromTop="38" />
+      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ObjectMother.cs" caret="5008" fromTop="38" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:DataAccess/f:UnitOfWork.cs" caret="483" fromTop="20" />
     </RecentFiles>
     <RecentEdits>
-      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ObjectMother.cs" caret="1529" fromTop="17" />
-      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ObjectMother.cs" caret="2321" fromTop="36" />
-      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ObjectMother.cs" caret="2344" fromTop="37" />
-      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ProblemTest.cs" caret="4540" fromTop="17" />
-      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ProblemTest.cs" caret="3503" fromTop="43" />
-      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ProblemTest.cs" caret="2176" fromTop="33" />
-      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ProblemTest.cs" caret="858" fromTop="16" />
-      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ProblemTest.cs" caret="819" fromTop="16" />
-      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ProblemTest.cs" caret="2993" fromTop="33" />
-      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ProblemTest.cs" caret="3031" fromTop="35" />
-      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ProblemTest.cs" caret="1999" fromTop="24" />
-      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ProblemTest.cs" caret="1374" fromTop="9" />
       <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ProblemTest.cs" caret="1226" fromTop="6" />
       <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ProblemTest.cs" caret="664" fromTop="8" />
       <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ProblemTest.cs" caret="4530" fromTop="50" />
@@ -233,6 +240,18 @@
       <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ObjectMother.cs" caret="1555" fromTop="24" />
       <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ObjectMother.cs" caret="2027" fromTop="25" />
       <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ObjectMother.cs" caret="728" fromTop="13" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:Models/d:ItemStates/d:ProposalStates/f:ProposalTechnicalCommitteeState.cs" caret="396" fromTop="14" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:Models/d:ItemStates/d:ProposalStates/f:ProposalSuperCommitteeState.cs" caret="312" fromTop="11" />
+      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ProblemTest.cs" caret="404" fromTop="16" />
+      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ProblemTest.cs" caret="569" fromTop="21" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:DataAccess/f:ProposeEntities.cs" caret="1966" fromTop="29" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:DataAccess/f:ProposeEntities.cs" caret="2243" fromTop="35" />
+      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ProblemTest.cs" caret="7198" fromTop="34" />
+      <File id="7B6F6B47-55E1-4814-A51F-9D9CC96FB5B5/f:ObjectMother.cs" caret="4673" fromTop="32" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:DataAccess/f:ProposeEntities.cs" caret="1726" fromTop="25" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:DataAccess/f:ProposeEntities.cs" caret="2256" fromTop="35" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:Models/f:Unit.cs" caret="216" fromTop="11" />
+      <File id="F9A53C6D-AAB6-463A-96AF-36DD13379FC8/d:DataAccess/d:Repository/f:UnitRepository.cs" caret="898" fromTop="27" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>

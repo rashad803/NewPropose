@@ -10,5 +10,7 @@ namespace NewPropose.DataAccess.IRepository
     {
         IEnumerable<Unit> GetAllTechnicalCommittees();
         Unit CreateTechnicalCommittee(string name);
+        Unit CreateSuperCommittee(string name);
+        IEnumerable<Unit> GetAllSuperCommittees();
     }
 }

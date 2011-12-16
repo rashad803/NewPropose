@@ -30,7 +30,7 @@ namespace NewPropose.DataAccess
         public DbSet<ProblemRegisterState> ProblemRegisterStates { get; set; }
         public DbSet<ProblemCancelState> ProblemCancelStates { get; set; }
         public DbSet<ProblemSuperCommitteeState> ProblemSuperCommitteeStates { get; set; }
-        public DbSet<ProblemConfirmState> ProblemConfirmStates { get; set; }
+        public DbSet<ProblemAcceptedState> ProblemConfirmStates { get; set; }
 
         public DbSet<ProposalState> ProposalStates { get; set; }
         public DbSet<ProposalRegisterState> ProposalRegisterStates { get; set; }
@@ -45,6 +45,8 @@ namespace NewPropose.DataAccess
         {
             //modelBuilder.Entity<Employee>().HasRequired(emp => emp.Outbox).WithRequiredDependent();
             modelBuilder.Entity<Unit>().HasRequired(unit => unit.Inbox).WithRequiredDependent();
+            modelBuilder.Entity<Inbox>().HasRequired(inbox => inbox.Owner).WithRequiredPrincipal();
+            
 
             modelBuilder.Entity<Problem>().Map(m => m.Requires(p => p.States));
             modelBuilder.Entity<Proposal>().Map(m => m.Requires(p => p.States));
@@ -52,5 +54,7 @@ namespace NewPropose.DataAccess
 
             base.OnModelCreating(modelBuilder);
         }
+
+
     }
 }

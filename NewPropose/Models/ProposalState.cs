@@ -16,10 +16,10 @@ namespace NewPropose.Models
         public int Id { get; set; }
         public bool IsCurrent { get; set; }
         public virtual Proposal Owner { get; set; }
-        public virtual Employee EmployeeHandler { get; set; }
+       // public virtual Employee EmployeeHandler { get; set; }
         public List<Comment> Comments { get; set; }
         public DateTime Created { get; set; }
-        public virtual Unit UnitHandler { get; set; }
+        //public virtual Unit UnitHandler { get; set; }
         public abstract void Handle(Proposal context, StateChangeInfo stateChangeInfo);          
     }
 }
